@@ -1,0 +1,22 @@
+sources:
+  - name: jaffle_shop # corresponds to the schema or not
+    database: raw 
+    schema: jaffle_shop
+    tables:
+      - name: customers
+      - name: orders
+        config:
+          freshness:
+            warn_after:
+              count: 20
+              period: day
+            error_after:
+              count: 30
+              period: day 
+          loaded_at_field: _etl_loaded_at     
+  - name: stripe 
+    database: raw 
+    schema: stripe 
+    tables:
+      - name: payments
+   
