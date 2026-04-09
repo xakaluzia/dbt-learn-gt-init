@@ -1,10 +1,18 @@
+version: 2
+
 sources:
-  - name: jaffle_shop # corresponds to the schema or not
-    database: raw 
+  - name: jaffle_shop 
     schema: jaffle_shop
+    database: raw 
     tables:
       - name: customers
+        columns:
+          - name: id # here we use id since that is the name of the column in the source
+            data_tests:
+              - unique 
+              - not_null
       - name: orders
+
         config:
           freshness:
             warn_after:
